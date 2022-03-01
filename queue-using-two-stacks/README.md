@@ -12,3 +12,22 @@ In this challenge, you must first implement a queue using two stacks. Then proce
 - 1: Enqueue element **x** into the end of the queue.
 - 2: Dequeue the element at the front of the queue.
 - 3: Print the element at the front of the queue.
+
+```
+const queue = []
+const actions = {
+    1: value => queue.push(value),
+    2: () => queue.splice(0, 1),
+    3: () => console.log(queue.slice(0, 1).join(''))
+}
+
+function processData (input) {
+    const lines = input.split('\n')
+    lines.splice(0, 1)
+    const total = lines.length
+    for (let j = 0; j < total; j++) {
+        const [fn, value] = lines[j].split(' ')
+        actions[fn](value)
+    }
+}
+```
